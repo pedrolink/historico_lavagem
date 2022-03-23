@@ -10,8 +10,14 @@
     margin-left: 20px;
 }
 
-#footer_dev {
+.div-tabela-final {
     margin-top: 80px;
+    width: 40%;
+    margin-left: 20px;
+}
+
+#footer_dev {
+    margin-top: 123px;
 }
 
 #tempo-simulacao {
