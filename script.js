@@ -59,7 +59,7 @@ function simula_valores() {
     var total_tempo_livre_operador = 0;
 
     if (tempo_simulacao && text_tecs && text_ts) {
-        while (tempo_servico_relogio <= tempo_simulacao) {
+        while (tempo_chegada_relogio <= tempo_simulacao) {
             const chegada_random = Math.floor(Math.random() * array_text_tecs.length);
             const servico_random = Math.floor(Math.random() * array_text_ts.length);
 
@@ -69,12 +69,12 @@ function simula_valores() {
             cliente += 1
             if (cliente == 1) {
                 // CÁLCULOS PRIMEIRO CLIENTE
-                tempo_chegada_relogio = tempo_chegada;
-                tempo_servico_relogio = tempo_chegada_relogio;
+                tempo_chegada_relogio = parseInt(tempo_chegada);
+                tempo_servico_relogio = parseInt(tempo_chegada_relogio);
                 tempo_cliente_fila = 0;
                 tempo_final_servico_relogio = parseInt(tempo_servico) + parseInt(tempo_servico_relogio);
-                tempo_cliente_sistema = tempo_servico;
-                tempo_livre_operador = tempo_chegada;
+                tempo_cliente_sistema = parseInt(tempo_servico);
+                tempo_livre_operador = parseInt(tempo_chegada);
 
                 // SOMA VALORES PRIMEIRO CLIENTE
                 total_tempo_chegada += parseInt(tempo_chegada);
@@ -85,6 +85,10 @@ function simula_valores() {
 
                 tabela_calculos.innerHTML += '<tr><th scope="row">' + cliente + '</th><td>' + tempo_chegada + '</td><td>' + tempo_chegada_relogio + '</td><td>' + tempo_servico + '</td><td>' + tempo_servico_relogio + '</td><td>' + tempo_cliente_fila + '</td><td>' + tempo_final_servico_relogio + '</td><td>' + tempo_cliente_sistema + '</td><td>' + tempo_livre_operador + '</td></tr>';
             } else {
+                var tempo_break = parseInt(tempo_chegada_relogio) + parseInt(tempo_chegada);
+                if (tempo_break > tempo_simulacao){
+                    break;
+                } 
                 // CÁLCULOS RESTANTE DOS CLIENTES
                 tempo_chegada_relogio = parseInt(tempo_chegada_relogio) + parseInt(tempo_chegada);
 
@@ -112,9 +116,8 @@ function simula_valores() {
                 total_tempo_cliente_sistema += parseInt(tempo_cliente_sistema);
                 total_tempo_livre_operador += parseInt(tempo_livre_operador);
 
-                if (tempo_servico_relogio <= tempo_simulacao) {
-                    tabela_calculos.innerHTML += '<tr><th scope="row">' + cliente + '</th><td>' + tempo_chegada + '</td><td>' + tempo_chegada_relogio + '</td><td>' + tempo_servico + '</td><td>' + tempo_servico_relogio + '</td><td>' + tempo_cliente_fila + '</td><td>' + tempo_final_servico_relogio + '</td><td>' + tempo_cliente_sistema + '</td><td>' + tempo_livre_operador + '</td></tr>';
-                }
+
+                tabela_calculos.innerHTML += '<tr><th scope="row">' + cliente + '</th><td>' + tempo_chegada + '</td><td>' + tempo_chegada_relogio + '</td><td>' + tempo_servico + '</td><td>' + tempo_servico_relogio + '</td><td>' + tempo_cliente_fila + '</td><td>' + tempo_final_servico_relogio + '</td><td>' + tempo_cliente_sistema + '</td><td>' + tempo_livre_operador + '</td></tr>';
             }
         }
 
@@ -127,12 +130,6 @@ function simula_valores() {
         var probabilidade_operador_livre = ((total_tempo_livre_operador / tempo_final_servico_relogio) * 100);
         var tempo_medio_servico = (total_tempo_servico / cliente);
         var tempo_medio_despendido = (total_tempo_cliente_sistema / cliente);
-
-        console.log(tempo_medio_espera);
-        console.log(probabilidade_cliente_espera);
-        console.log(probabilidade_operador_livre);
-        console.log(tempo_medio_servico);
-        console.log(tempo_medio_despendido);
 
         document.getElementById('tempo-medio-espera').innerHTML = tempo_medio_espera.toFixed(2);
         document.getElementById('probabilidade-cliente-espera').innerHTML = probabilidade_cliente_espera.toFixed(2);
