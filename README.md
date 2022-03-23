@@ -1,2 +1,13 @@
-# historico_lavagem
-Simulador de lavagem de carro com histórico de tempo
+## Utilização
+
+Utilize o navegador de sua escolha para executar o arquivo principal do projeto "index.html".
+
+## Ferramentas
+
+* JavaScript
+* HTML
+* CSS
+
+## Desenvolvedor
+
+Pedro Link
