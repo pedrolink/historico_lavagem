@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="./style/bootstrap.css">
+    <link rel="stylesheet" href="./style/style.css">
+
+    <script type="text/javascript" src="script.js"></script>
+
+    <title>Simulador (Tempo lavagem de carros)</title>
+</head>
+
+<body>
+    <div class="div-principal">
+        <!-- TEMPO SIMULADO -->
+        <div class="row g-3">
+            <div class="col-3">
+                <label>Tempo Simulação (minutos):</label>
+                <input type="number" class="form-control" id="tempo-simulacao">
+            </div>
+            <div class="col-3" id="div-buttons">
+                <button class="btn btn-primary" onclick="simula_valores()">Simular</button>
+                <button class="btn btn-danger">Limpar</button>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row g-12" id="div-cards">
+            <!-- TEC -->
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">TEC</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Tempo Entre Chegadas</h6>
+                    <input type="number" class="form-control" id="input-tec">
+                    <button class="btn btn-primary" id="adiciona-tec" onclick="adiciona_tec()">Adicionar TEC</button>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;" id="div-tecs">
+                <div class="card-body">
+                    <textarea class="form-control card-body" id="text-tecs" cols="20" rows="5" disabled></textarea>
+                </div>
+            </div>
+
+            <!-- TS -->
+            <div class="card" style="width: 18rem;" id="div-ts">
+                <div class="card-body">
+                    <h5 class="card-title">TS</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Tempo de Serviço</h6>
+                    <input type="number" class="form-control" id="input-ts">
+                    <button class="btn btn-primary" id="adiciona-ts" onclick="adiciona_ts()">Adicionar TS</button>
+                </div>
+            </div>
+
+            <div class="card" style="width: 18rem;" id="text-div-ts">
+                <div class="card-body">
+                    <textarea class="form-control card-body" id="text-ts" cols="20" rows="5" disabled></textarea>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div class="div-tabela">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Tempo desde a última chegada (minutos)</th>
+                    <th scope="col">Tempo de Chegada no Relógio</th>
+                    <th scope="col">Tempo de Serviço (minutos)</th>
+                    <th scope="col">Tempo de Início do Serviço do Relógio</th>
+                    <th scope="col">Tempo do Cliente na Fila (minutos)</th>
+                    <th scope="col">Tempo Final do Serviço no Relógio</th>
+                    <th scope="col">Tempo do Cliente no Sistema (minutos)</th>
+                    <th scope="col">Tempo Livre do Operador (minutos)</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+            </tbody>
+        </table>
+    </div>
+
+    <div class="fixed-bottom">
+        <footer class="bg-light text-center text-lg-start" id="footer_dev">
+            <div class="text-center p-3" style="background-color: rgba(172, 148, 148, 0.385);">
+                <a class="text-dark" target="_blank" href="https://github.com/pedrolink">Develop by Pedro Link</a>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+.div-principal {
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.div-tabela {
+    width: 90%;
+    margin-top: 100px;
+    margin-left: 20px;
+}
+
+#footer_dev {
+    margin-top: 80px;
+}
+
+#tempo-simulacao {
+    margin-top: 5px;
+    width: 50%;
+}
+
+#div-buttons {
+    margin-top: 46px;
+    margin-left: -210px;
+}
+
+#div-cards {
+    margin-left: 1px;
+    margin-top: 30px;
+}
+
+#adiciona-tec {
+    margin-top: 10px;
+}
+
+#div-tecs {
+    margin-left: 15px;
+}
+
+#text_tecs {
+    resize: none;
+}
+
+#div-ts {
+    margin-left: 40px;
+}
+
+#text_ts {
+    resize: none;
+}
+
+#text-div-ts {
+    margin-left: 15px;
+}
+
+#adiciona-ts {
+    margin-top: 10px;
+}
