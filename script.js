@@ -39,7 +39,6 @@ function simula_valores() {
     var text_tecs = document.getElementById('text-tecs').value;
     var text_ts = document.getElementById('text-ts').value;
     var tabela_calculos = document.getElementById('table-body');
-    tabela_calculos.innerHTML = '';
 
     const array_text_tecs = text_tecs.split(' ');
     const array_text_ts = text_ts.split(' ');
@@ -57,6 +56,8 @@ function simula_valores() {
     var total_tempo_cliente_fila = 0;
     var total_tempo_cliente_sistema = 0;
     var total_tempo_livre_operador = 0;
+
+    tabela_calculos.innerHTML = '';
 
     if (tempo_simulacao && text_tecs && text_ts) {
         while (tempo_chegada_relogio <= tempo_simulacao) {
@@ -83,12 +84,14 @@ function simula_valores() {
                 total_tempo_cliente_sistema += parseInt(tempo_cliente_sistema);
                 total_tempo_livre_operador += parseInt(tempo_livre_operador);
 
+                // INSERE LINHA DO PRIMEIRO CLIENTE
                 tabela_calculos.innerHTML += '<tr><th scope="row">' + cliente + '</th><td>' + tempo_chegada + '</td><td>' + tempo_chegada_relogio + '</td><td>' + tempo_servico + '</td><td>' + tempo_servico_relogio + '</td><td>' + tempo_cliente_fila + '</td><td>' + tempo_final_servico_relogio + '</td><td>' + tempo_cliente_sistema + '</td><td>' + tempo_livre_operador + '</td></tr>';
             } else {
                 var tempo_break = parseInt(tempo_chegada_relogio) + parseInt(tempo_chegada);
                 if (tempo_break > tempo_simulacao){
                     break;
-                } 
+                }
+
                 // CÁLCULOS RESTANTE DOS CLIENTES
                 tempo_chegada_relogio = parseInt(tempo_chegada_relogio) + parseInt(tempo_chegada);
 
@@ -116,7 +119,7 @@ function simula_valores() {
                 total_tempo_cliente_sistema += parseInt(tempo_cliente_sistema);
                 total_tempo_livre_operador += parseInt(tempo_livre_operador);
 
-
+                // INSERE LINHA DOS CLIENTES
                 tabela_calculos.innerHTML += '<tr><th scope="row">' + cliente + '</th><td>' + tempo_chegada + '</td><td>' + tempo_chegada_relogio + '</td><td>' + tempo_servico + '</td><td>' + tempo_servico_relogio + '</td><td>' + tempo_cliente_fila + '</td><td>' + tempo_final_servico_relogio + '</td><td>' + tempo_cliente_sistema + '</td><td>' + tempo_livre_operador + '</td></tr>';
             }
         }
